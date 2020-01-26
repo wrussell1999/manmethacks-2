@@ -4,4 +4,6 @@
     <string name="finish_recording">Finished Recording</string>
     <string name="start_playback">Start playback</string>
     <string name="stop_playback">Stop playback</string>
+    <string name="record">Press to record</string>
+    <string name="saved">My Recordings</string>
 </resources>

@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
             val mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(outputFile)
             System.out.println(speedBar?.progress)
-            mediaPlayer.playbackParams.setPitch(speedBar?.progress!!.toFloat())
             mediaPlayer.prepare()
+            mediaPlayer.playbackParams.setPitch(speedBar?.progress!!.toFloat())
             mediaPlayer.start()
             Toast.makeText(applicationContext, getString(R.string.start_playback), Toast.LENGTH_SHORT).show()
         } catch(e: Exception) {

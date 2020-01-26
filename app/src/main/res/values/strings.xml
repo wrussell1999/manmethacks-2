@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ManMetHacks 2.0</string>
+    <string name="record">Press to record</string>
+    <string name="saved">My Recordings</string>
 </resources>

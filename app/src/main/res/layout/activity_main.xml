@@ -21,4 +21,11 @@
         android:text="Play"
         android:onClick="play" />
 
+    <SeekBar
+        android:id="@+id/speed_bar"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>

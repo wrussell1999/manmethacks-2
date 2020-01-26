@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        speedBar = findViewById(R.id.speed_bar)
+        speedBar = findViewById(R.id.slider)
 
         outputFile = "${externalCacheDir?.absolutePath}/recording.3gp"
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             val mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(outputFile)
             System.out.println(speedBar?.progress)
-            mediaPlayer.playbackParams.setPitch(speedBar?.progress!!.toFloat() / 100)
+            mediaPlayer.playbackParams.setPitch(speedBar?.progress!!.toFloat())
             mediaPlayer.prepare()
             mediaPlayer.start()
             Toast.makeText(applicationContext, getString(R.string.start_playback), Toast.LENGTH_SHORT).show()

@@ -3,6 +3,7 @@ package com.willrussell.manmethacks2
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.media.PlaybackParams
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
@@ -21,14 +22,15 @@ class MainActivity : AppCompatActivity() {
     var outputFile: String? = null
     var recordingState: Boolean? = false
     var playbackState: Boolean? = false
+    var pitchBar: SeekBar? = null
     var speedBar: SeekBar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        speedBar = findViewById(R.id.slider)
+        pitchBar = findViewById(R.id.pitch)
+        speedBar = findViewById(R.id.speed)
 
         outputFile = "${externalCacheDir?.absolutePath}/recording.3gp"
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -71,7 +73,10 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.setDataSource(outputFile)
             System.out.println(speedBar?.progress)
             mediaPlayer.prepare()
-            mediaPlayer.playbackParams.setPitch(speedBar?.progress!!.toFloat())
+            var params = PlaybackParams()
+            params.setPitch(pitchBar?.progress!!.toFloat() / 50)
+            params.setSpeed(speedBar?.progress!!.toFloat() / 50)
+            mediaPlayer.playbackParams = params
             mediaPlayer.start()
             Toast.makeText(applicationContext, getString(R.string.start_playback), Toast.LENGTH_SHORT).show()
         } catch(e: Exception) {

@@ -12,8 +12,4 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun openRecordings(v: View?) {
-        val intent = Intent(applicationContext, LibraryActivity::class.java)
-        startActivity(intent)
-    }
 }
